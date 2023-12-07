@@ -1,12 +1,13 @@
 export const environment = {
   firebase: {
-    projectId: 'demo-project',
-    appId: '1:767794269558:web:819cea854c7b1b4ce6fe57',
-    storageBucket: 'angularstart-chat.appspot.com',
-    apiKey: 'AIzaSyAmGGkG67K2cZ2H288DWQ46f5TIdIl3vs8',
-    authDomain: 'angularstart-chat.firebaseapp.com',
-    messagingSenderId: '767794269558',
-  },
-  production: false,
-  useEmulators: true,
+    apiKey: "AIzaSyACFx03sgj-88V0uY871E5vo3rCADg3-Q0",
+    authDomain: "cinema-tokyo.firebaseapp.com",
+    projectId: "cinema-tokyo",
+    storageBucket: "cinema-tokyo.appspot.com",
+    messagingSenderId: "722322032580",
+    appId: "1:722322032580:web:02eec3b8b75030bb578691",
+    measurementId: "G-C0XTPRW41K"
+    },
+    production: false,
+    useEmulators: true,
 };

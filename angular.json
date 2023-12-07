@@ -60,6 +60,7 @@
               "outputHashing": "all"
             },
             "development": {
+
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -83,6 +84,7 @@
               "browserTarget": "angularstart-chat:build:production"
             },
             "development": {
+              "port": 42302,
               "browserTarget": "angularstart-chat:build:development"
             }
           },
@@ -109,5 +111,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

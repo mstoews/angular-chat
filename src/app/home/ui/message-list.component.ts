@@ -7,21 +7,12 @@ import { Message } from 'src/app/shared/interfaces/message';
 @Component({
   standalone: true,
   selector: 'app-message-list',
-  template: `
-    <ul cdkScrollable class="gradient-bg">
+  template:
+  `<ul cdkScrollable class="gradient-bg">
       @for (message of messagesSignal(); track message.created){
-      <li
-        [ngStyle]="{
-          'flex-direction':
-            message.author === activeUser?.email ? 'row-reverse' : 'row'
-        }"
-      >
+      <li [ngStyle]="{'flex-direction': message.author === activeUser?.email ? 'row-reverse' : 'row' }" >
         <div class="avatar animate-in-primary">
-          <img
-            src="https://api.dicebear.com/7.x/bottts/svg?seed={{
-              message.author.split('@')[0]
-            }}"
-          />
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed={{ message.author.split('@')[0] }}" />
         </div>
         <div class="message animate-in-secondary">
           <small>{{ message.author }}</small>
@@ -70,9 +61,7 @@ import { Message } from 'src/app/shared/interfaces/message';
 export class MessageListComponent {
   messagesSignal = signal<Message[]>([]);
 
-  @Input({ required: true }) set messages(value: Message[]) {
-    this.messagesSignal.set(value);
-  }
+  @Input({ required: true }) set messages(value: Message[]) {  this.messagesSignal.set(value); }
   @Input({ required: true }) activeUser!: AuthUser;
   @ViewChild(CdkScrollable) scrollContainer!: CdkScrollable;
 

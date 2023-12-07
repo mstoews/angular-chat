@@ -3,3 +3,4 @@ export interface Message {
   content: string;
   created: string;
 }
+

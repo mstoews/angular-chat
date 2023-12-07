@@ -20,7 +20,7 @@ export const AUTH = new InjectionToken('Firebase auth', {
   factory: () => {
     const auth = getAuth();
     if (environment.useEmulators) {
-      connectAuthEmulator(auth, 'http://localhost:9099', {
+      connectAuthEmulator(auth, 'http://localhost:9199', {
         disableWarnings: true,
       });
     }
@@ -34,7 +34,7 @@ export const FIRESTORE = new InjectionToken('Firebase firestore', {
     let firestore: Firestore;
     if (environment.useEmulators) {
       firestore = initializeFirestore(app, {});
-      connectFirestoreEmulator(firestore, 'localhost', 8080);
+      connectFirestoreEmulator(firestore, 'localhost', 8180);
     } else {
       firestore = getFirestore();
     }

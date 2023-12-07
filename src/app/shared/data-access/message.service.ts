@@ -1,7 +1,7 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { EMPTY, Observable, Subject, defer, exhaustMap, from } from 'rxjs';
-import { collection, query, orderBy, limit, addDoc } from 'firebase/firestore';
+import { collection, query, orderBy, limit, addDoc, updateDoc } from 'firebase/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { catchError, filter, map, retry } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ export class MessageService {
 
   // sources
   messages$ = this.getMessages().pipe(
-    // restart stream when user reauthenticates
+    // restart stream when user re-authenticates
     retry({
       delay: () => this.authUser$.pipe(filter((user) => !!user)),
     })
@@ -78,11 +78,11 @@ export class MessageService {
   }
 
   private getMessages() {
-    const messagesCollection = query(
-      collection(this.firestore, 'messages'),
-      orderBy('created', 'desc'),
-      limit(50)
-    );
+      const messagesCollection = query(
+        collection(this.firestore, 'messages'),
+        orderBy('created', 'desc'),
+        limit(50)
+      );
 
     return collectionData(messagesCollection, { idField: 'id' }).pipe(
       map((messages) => [...messages].reverse())

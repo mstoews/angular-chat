@@ -11,10 +11,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   template: `
     <div class="container gradient-bg">
       @if(authService.user() === null){
-      <app-login-form
+        <app-login-form
         [loginStatus]="loginService.status()"
-        (login)="loginService.login$.next($event)"
-      />
+        (login)="loginService.login$.next($event)" />
       <a routerLink="/auth/register">Create account</a>
       } @else {
       <mat-spinner diameter="50" />
