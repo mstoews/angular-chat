@@ -10,6 +10,8 @@ import { authState } from 'rxfire/auth';
 import { Credentials } from '../interfaces/credentials';
 import { AUTH } from 'src/app/app.config';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { HttpClient } from '@angular/common/http';
+
 
 export type AuthUser = User | null | undefined;
 
@@ -22,6 +24,7 @@ interface AuthState {
 })
 export class AuthService {
   private auth = inject(AUTH);
+  private http = inject(HttpClient)
 
   // sources
   private user$ = authState(this.auth);
@@ -54,6 +57,11 @@ export class AuthService {
       )
     );
   }
+
+  sendRestAPI() {
+        this.http.get("http://localhost:33201/dist");
+  }
+
 
   logout() {
     signOut(this.auth);

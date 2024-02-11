@@ -1,14 +1,14 @@
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyACFx03sgj-88V0uY871E5vo3rCADg3-Q0",
-    authDomain: "cinema-tokyo.firebaseapp.com",
-    projectId: "cinema-tokyo",
-    storageBucket: "cinema-tokyo.appspot.com",
-    messagingSenderId: "722322032580",
-    appId: "1:722322032580:web:02eec3b8b75030bb578691",
-    measurementId: "G-C0XTPRW41K"
+    apiKey: "AIzaSyAF8q2eq1tAhBO4PvCeNvVQR7oKy5LYUjw",
+    authDomain: "condo-mgmt.firebaseapp.com",
+    projectId: "condo-mgmt",
+    storageBucket: "condo-mgmt.appspot.com",
+    messagingSenderId: "1023314501312",
+    appId: "1:1023314501312:web:a7cc0b9047944b25b9d725",
+    measurementId: "G-5BFE1ESWF1"
     },
     production: true,
-
     useEmulators: false,
+    baseUrl: "http://localhost:33201/"
 };

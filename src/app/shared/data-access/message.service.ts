@@ -8,6 +8,7 @@ import { catchError, filter, map, retry } from 'rxjs/operators';
 import { FIRESTORE } from 'src/app/app.config';
 import { Message } from '../interfaces/message';
 import { AuthService } from './auth.service';
+import { SendhttpService } from './sendhttp.service';
 
 interface MessageState {
   messages: Message[];
@@ -21,6 +22,7 @@ export class MessageService {
   private firestore = inject(FIRESTORE);
   private authService = inject(AuthService);
   private authUser$ = toObservable(this.authService.user);
+  private sendHttp = inject(SendhttpService)
 
   // sources
   messages$ = this.getMessages().pipe(
@@ -76,6 +78,11 @@ export class MessageService {
         this.state.update((state) => ({ ...state, error }))
       );
   }
+  
+  private SendHttpRequest()
+   {
+     this.sendHttp.sendRequest();
+   } 
 
   private getMessages() {
       const messagesCollection = query(
@@ -96,6 +103,7 @@ export class MessageService {
       created: Date.now().toString(),
     };
 
+   
     const messagesCollection = collection(this.firestore, 'messages');
     return defer(() => addDoc(messagesCollection, newMessage));
   }

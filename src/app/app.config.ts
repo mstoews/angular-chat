@@ -12,6 +12,11 @@ import { environment } from '../environments/environment';
 
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { spinnerInterceptor } from './spinner.interceptor';
+import { authTokenInterceptor } from './auth.token.interceptor';
+import { TokenService } from './token.service';
+
 
 const app = initializeApp(environment.firebase);
 
@@ -43,5 +48,11 @@ export const FIRESTORE = new InjectionToken('Firebase firestore', {
 });
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimations()],
+  providers: [
+    TokenService,
+    provideRouter(routes), 
+    provideAnimations(),
+    provideHttpClient(  
+      withInterceptors([spinnerInterceptor, authTokenInterceptor ])),
+  ]
 };
