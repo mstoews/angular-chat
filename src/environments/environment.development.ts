@@ -10,5 +10,5 @@ export const environment = {
     },
     production: false,
     useEmulators: false,
-    baseUrl: "http://localhost:33201/"
+    baseUrl: "http://localhost:8081/"
 };

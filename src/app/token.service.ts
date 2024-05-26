@@ -8,15 +8,18 @@ export class TokenService {
 
   constructor() { 
     this.auth.currentUser?.getIdToken().then( (token) => {
-
-      this.token = token;    
-      console.log('Token interceptor :', token);            
+      this.token = token;
+      localStorage.setItem('token', token);    
     })   
   }
 
   getToken(): string {
+    if (this.token == undefined || this.token == '')
+    this.auth.currentUser?.getIdToken().then( (token) => {
+      this.token = token;
+      localStorage.setItem('token', token);    
+    })   
     return this.token;
   }
-
 
 }
